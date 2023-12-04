@@ -109,7 +109,7 @@ const DetailPost = ({ dispatch, navigate }) => {
                                 </span>
                                 <span className="capitalize">{post?.address}</span>
                             </div>
-                            <div className="flex items-center gap-8">
+                            <div className="flex items-center gap-2 sm:gap-8 flex-wrap">
                                 <div className="flex items-center">
                                     <span className="mr-[5px]">
                                         <IoPricetagsOutline />
