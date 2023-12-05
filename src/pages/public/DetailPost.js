@@ -11,6 +11,8 @@ import { path } from '../../ultils/path';
 import { MapInDetailPost } from '../../components/map';
 import LoadingDetailPost from '../../components/loading/LoadingDetailPost';
 import withBaseComp from '../../hocs/withBaseComp';
+import moment from 'moment';
+import 'moment/locale/vi';
 
 const DetailPost = ({ dispatch, navigate }) => {
     const { LuMapPin, IoPricetagsOutline, BsTextareaResize, AiOutlineFieldTime, CiHashtag } = icons;
@@ -128,7 +130,7 @@ const DetailPost = ({ dispatch, navigate }) => {
                                     <span className="mr-[5px]">
                                         <AiOutlineFieldTime />
                                     </span>
-                                    <span>{post?.overviews?.created}</span>
+                                    <span>{moment(post?.overviews?.createdAt).fromNow()}</span>
                                 </div>
                                 <div className="flex items-center">
                                     <span className="mr-[5px]">
