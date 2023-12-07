@@ -76,14 +76,12 @@ const Login = () => {
                     <h1 className="text-[28px] mb-[15px] font-medium">Đăng nhập</h1>
                     <InputFileds
                         label={'Số điện thoại'}
-                        placeholder={'Số điện thoại'}
                         registername={register('phone')}
                         errorName={errors.phone?.message}
                         withFull
                     />
                     <InputFileds
                         label={'Mật khẩu'}
-                        placeholder={'Mật khẩu'}
                         registername={register('password')}
                         errorName={errors.password?.message}
                         withFull
