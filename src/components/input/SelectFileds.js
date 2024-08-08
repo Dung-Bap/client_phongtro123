@@ -24,26 +24,10 @@ const SelectFileds = ({
                 <option value="">{defaultOption}</option>
                 {options?.map(option => (
                     <option
-                        key={
-                            type === 'province'
-                                ? option.province_id
-                                : type === 'district'
-                                ? option.district_id
-                                : option.code
-                        }
-                        value={
-                            type === 'province'
-                                ? option.province_id
-                                : type === 'district'
-                                ? option.district_id
-                                : option.code
-                        }
+                        key={type === 'province' ? option.id : type === 'district' ? option.id : option.code}
+                        value={type === 'province' ? option.id : type === 'district' ? option.id : option.code}
                     >
-                        {type === 'province'
-                            ? option.province_name
-                            : type === 'district'
-                            ? option.district_name
-                            : option.value}
+                        {type === 'province' ? option.full_name : type === 'district' ? option.full_name : option.value}
                     </option>
                 ))}
             </select>

@@ -58,8 +58,8 @@ const NewPost = ({ dispatch, navigate, valueEditPost }) => {
     useEffect(() => {
         setPositionInfos(
             `${debouceAddress ? `${debouceAddress},` : ''} ${
-                district ? `${districts?.find(item => item.district_id === district)?.district_name},` : ''
-            } ${province ? `${provinces?.find(item => item.province_id === province)?.province_name}` : ''}`
+                district ? `${districts?.find(item => item.id === district)?.full_name},` : ''
+            } ${province ? `${provinces?.find(item => item.id === province)?.full_name}` : ''}`
         );
     }, [debouceAddress, district, districts, province, provinces]);
 
@@ -155,18 +155,18 @@ const NewPost = ({ dispatch, navigate, valueEditPost }) => {
 
     const onSubmit = async data => {
         data.address = `${debouceAddress || valueEditPost?.address?.split(',')[0].trim()}, ${
-            districts?.find(item => item.district_id === district)?.district_name ||
+            districts?.find(item => item.id === district)?.full_name ||
             valueEditPost?.address?.split(',')[valueEditPost?.address?.split(',').length - 2].trim()
         }, ${
-            provinces?.find(item => item.province_id === province)?.province_name ||
+            provinces?.find(item => item.id === province)?.full_name ||
             valueEditPost?.address?.split(',')[valueEditPost?.address?.split(',').length - 1].trim()
         }`;
 
         data.labelBody = `${categories.find(item => item.code === data.categoryCode).value} ${
-            districts.find(item => item.district_id === data.district).district_name
+            districts.find(item => item.id === data.district).full_name
         }`;
         data.area = `${categories.find(item => item.code === data.categoryCode).value} ${
-            provinces.find(item => item.province_id === data.province).province_name
+            provinces.find(item => item.id === data.province).full_name
         }`;
         data.category = `${categories.find(item => item.code === data.categoryCode).value}`;
         data.userId = dataUser.id;
@@ -261,37 +261,21 @@ const NewPost = ({ dispatch, navigate, valueEditPost }) => {
                                               : `${valueEditPost?.address?.split(',')[0].trim()},`
                                       } ${
                                           district
-                                              ? `${
-                                                    districts?.find(item => item.district_id === district)
-                                                        ?.district_name
-                                                },`
+                                              ? `${districts?.find(item => item.id === district)?.full_name},`
                                               : `${valueEditPost?.address
                                                     ?.split(',')
                                                     [valueEditPost?.address?.split(',').length - 2].trim()},`
                                       } ${
                                           province
-                                              ? `${
-                                                    provinces?.find(item => item.province_id === province)
-                                                        ?.province_name
-                                                }`
+                                              ? `${provinces?.find(item => item.id === province)?.full_name}`
                                               : `${valueEditPost?.address
                                                     ?.split(',')
                                                     [valueEditPost?.address?.split(',').length - 1].trim()}`
                                       }`
                                     : `${debouceAddress ? `${debouceAddress},` : ''} ${
-                                          district
-                                              ? `${
-                                                    districts?.find(item => item.district_id === district)
-                                                        ?.district_name
-                                                },`
-                                              : ''
+                                          district ? `${districts?.find(item => item.id === district)?.full_name},` : ''
                                       } ${
-                                          province
-                                              ? `${
-                                                    provinces?.find(item => item.province_id === province)
-                                                        ?.province_name
-                                                }`
-                                              : ''
+                                          province ? `${provinces?.find(item => item.id === province)?.full_name}` : ''
                                       }`
                             }
                         />

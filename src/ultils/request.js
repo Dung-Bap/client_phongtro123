@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const request = axios.create({
-    baseURL: 'https://vapi.vnappmob.com/api/',
+    baseURL: 'https://esgoo.net/api-tinhthanh/',
 });
 
 export const get = async (path, options = {}) => {
